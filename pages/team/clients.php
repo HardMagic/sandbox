@@ -13,7 +13,7 @@ include_once "../../include/collections_functions.php";
 $offset=getvalescaped("offset",0);
 $find=getvalescaped("find","");
 $order_by=getvalescaped("order_by","u.username");
-$group=19;
+$group=19;  // For Clients Specifically
 
 # Pager
 $per_page=getvalescaped("per_page_list",$default_perpage_list);rs_setcookie('per_page_list', $per_page);
@@ -262,3 +262,14 @@ for ($n=0;$n<count($active);$n++) {if($n>0) {echo", ";}echo "<b>" . $active[$n][
 <?php
 include "../../include/footer.php";
 ?>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script>
+$(document).ready(function(){
+	$(#finds).autocomplete({
+		source:'search.php'
+	});
+	
+});
+</script>
