@@ -9,7 +9,7 @@
     $db = new mysqli($dbHost,$dbUsername,$dbPassword,$dbName);
     
     //get search term
-    $searchTerm = $_GET['term'];
+    $searchTerm = $_GET['finds'];
     
     //get matched data from skills table
     $query = $db->query("SELECT username FROM clients WHERE username LIKE '%".$searchTerm."%' ORDER BY username ASC");
