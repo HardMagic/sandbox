@@ -3,7 +3,7 @@
     $dbHost = 'localhost';
     $dbUsername = 'root';
     $dbPassword = '';
-    $dbName = 'u';
+    $dbName = 'c9';
     
     //connect with the database
     $db = new mysqli($dbHost,$dbUsername,$dbPassword,$dbNamte);
@@ -12,9 +12,9 @@
     $searchTerm = $_GET['term'];
     
     //get matched data from skills table
-    $query = $db->query("SELECT * FROM u WHERE fname LIKE '%".$searchTerm."%' ORDER BY fname ASC");
+    $query = $db->query("SELECT username FROM clients WHERE username LIKE '%".$searchTerm."%' ORDER BY fname ASC");
     while ($row = $query->fetch_assoc()) {
-        $data[] = $row['fname'];
+        $data[] = $row['username'];
     }
     
     //return json data
