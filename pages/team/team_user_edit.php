@@ -9,22 +9,6 @@ include "../../include/db.php";
 include_once "../../include/general.php";
 include "../../include/authenticate.php"; 
 include "../../include/api_functions.php"; 
-//<!-- #DannyMartin10242016-->
-$con = mysql_connect('localhost','root','');
-if(!$con){
-die("Could not connect" . mysql_error());
-}
-else
-echo "<h1>connected</h1>";
-$database = "c9"
-$select = mysql_select_db($database);
-if(!$select){
-	die("Could not select $database ".mysql_error());
-}
-else 
-echo "$database selected";
-
-
 
 $backurl=getval("backurl","");
 $url=$baseurl_short."pages/team/team_user_edit.php?ref=" .getvalescaped("ref","",true) . "&backurl=" . urlencode($backurl);
@@ -239,17 +223,6 @@ if (!hook("ticktoemailpassword"))
 </div>
 </form>
 </div>
-<!-- #DannyMartin10242016-->
-<?php
-if(isset($_POST['username'])){ //if username is set add to database
-
-$sql = "INSERT INTO clients VALUES ($_POST['username'])";
-$query = mysql_query($sql);
-if(!$query){
-	die(mysql_error());
-}
-}
-?>
 <?php		
 include "../../include/footer.php";
 ?>
