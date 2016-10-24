@@ -9,7 +9,7 @@ include "../../include/db.php";
 include_once "../../include/general.php";
 include "../../include/authenticate.php"; 
 include "../../include/api_functions.php"; 
-
+//<!-- #DannyMartin10242016-->
 $con = mysql_connect('localhost','root','');
 if(!$con){
 die("Could not connect" . mysql_error());
@@ -239,15 +239,16 @@ if (!hook("ticktoemailpassword"))
 </div>
 </form>
 </div>
+<!-- #DannyMartin10242016-->
 <?php
-if(isset($_POST['username'])) //if username is set add to database
+if(isset($_POST['username'])){ //if username is set add to database
 
 $sql = "INSERT INTO clients VALUES ($_POST['username'])";
 $query = mysql_query($sql);
 if(!$query){
 	die(mysql_error());
 }
-
+}
 ?>
 <?php		
 include "../../include/footer.php";
