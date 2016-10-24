@@ -10,6 +10,11 @@ include_once "../../include/general.php";
 include "../../include/authenticate.php"; 
 include "../../include/api_functions.php"; 
 
+$con = mysql_connect('localhost','root','');
+if(!$con){
+die("Could not connect" . mysql_error());
+}
+
 $backurl=getval("backurl","");
 $url=$baseurl_short."pages/team/team_user_edit.php?ref=" .getvalescaped("ref","",true) . "&backurl=" . urlencode($backurl);
 if (!checkperm("u")) {redirect($baseurl_short ."login.php?error=error-permissions-login&url=".urlencode($url));}
