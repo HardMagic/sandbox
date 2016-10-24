@@ -12,7 +12,7 @@
     $searchTerm = $_GET['finds'];
     
     //get matched data from skills table
-    $query = $db->query("SELECT username FROM clients WHERE username LIKE '%".$searchTerm."%' ORDER BY username ASC");
+    $query = $db->query("SELECT * FROM clients WHERE username LIKE '%".$searchTerm."%' ORDER BY username ASC");
     while ($row = $query->fetch_assoc()) {
         $data[] = $row['username'];
     }
