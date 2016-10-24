@@ -15,7 +15,7 @@ if(!$con){
 die("Could not connect" . mysql_error());
 }
 else
-echo "connected";
+echo "<h1>connected</h1>";
 
 $backurl=getval("backurl","");
 $url=$baseurl_short."pages/team/team_user_edit.php?ref=" .getvalescaped("ref","",true) . "&backurl=" . urlencode($backurl);
