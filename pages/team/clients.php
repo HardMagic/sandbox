@@ -258,22 +258,16 @@ for ($n=0;$n<count($active);$n++) {if($n>0) {echo", ";}echo "<b>" . $active[$n][
 <?php } // end hook("replaceusersonline")
 ?>
 
-
-<?php
-include "../../include/footer.php";
-?>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script>
-$(document).ready(function(){
-	
-	$(#finds).click(function(){
-		alert("clicked");
-	});
-	$(#finds).autocomplete({
-		source:'search.php'
-	});
-	
+$(function() {
+    $( "#finds" ).autocomplete({
+        source: 'search.php'
+    });
 });
 </script>
+<?php
+include "../../include/footer.php";
+?>
