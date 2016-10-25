@@ -262,12 +262,35 @@ for ($n=0;$n<count($active);$n++) {if($n>0) {echo", ";}echo "<b>" . $active[$n][
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script>
-$(function() {
     $( "#finds" ).autocomplete({
-        source: 'search.php'
+		 width:448,
+		 delimiter: /(,|;)\s*/,
+         lookup: <?php echo "'autocomplete(#find)'" ?>
     });
-});
 </script>
-<?php
+
+<?php 
+
+function autocomplete($inputName){
+	$searchTerm = $_GET[$inputName];
+	$query = $db->query("SELECT * FROM user WHERE fullname LIKE '%".$searchTerm."%' ORDER BY fullname ASC");
+    while ($row = $query->fetch_assoc()) {
+        $data[] = $row['username'];
+    }
+    //return json data
+    echo json_encode($data);
+}
+   /* //get search term
+    $searchTerm = $_GET['finds'];
+    
+    //get matched data from skills table
+    $query = $db->query("SELECT * FROM user WHERE fullname LIKE '%".$searchTerm."%' ORDER BY fullname ASC");
+    while ($row = $query->fetch_assoc()) {
+        $data[] = $row['username'];
+    }
+    
+    //return json data
+    echo json_encode($data);
+    */
 include "../../include/footer.php";
 ?>
