@@ -131,9 +131,18 @@ if (($user["login_tries"]>=$max_login_attempts_per_username) && (strtotime($user
 <?php } ?>
 <div class="clearerleft"> </div></div>
 <?php hook("additionalusergroupfields"); ?>
-
+<!-- #DannyMartin10262016-->
+<div class ="Question"><label>Type</label>
+	<select class="stdwidth" name="userType">
+		<option value="Medicare">Medicare</option>
+		<option value="Pre-65">pre-65</option>
+	</select>
+	<div class="clearerleft"></div>
+</div>
 <div class="Question"><label><?php echo $lang["emailaddress"]?></label><input name="email" type="text" class="stdwidth" value="<?php echo form_value_display($user,"email") ?>"><div class="clearerleft"> </div></div>
-
+<!-- #DannyMartin10262016-->
+<div class="Question"><label>Email address 2: </label><input name = "email2" type="text" class ="stdwidth" value="E-mail Address 2"><div class ="clearerleft"></div></div>
+<div class="Question"><label>Email address 3:</label><input name = "email3" type="text" class ="stdwidth" value ="E-mail Address 3"><div class = "clearerleft"></div></div>
 <div class="Question"><label><?php echo $lang["accountexpiresoptional"]?><br/><?php echo $lang["format"] . ": " . $lang["yyyy-mm-dd"]?></label><input name="account_expires" type="text" class="stdwidth" value="<?php echo form_value_display($user,"account_expires")?>"><div class="clearerleft"> </div></div>
 
 <div class="Question"><label><?php echo $lang["ipaddressrestriction"]?><br/><?php echo $lang["wildcardpermittedeg"]?> 194.128.*</label><input name="ip_restrict" type="text" class="stdwidth" value="<?php echo form_value_display($user,"ip_restrict") ?>"><div class="clearerleft"> </div></div>
