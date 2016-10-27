@@ -131,7 +131,7 @@ if (($user["login_tries"]>=$max_login_attempts_per_username) && (strtotime($user
 <?php } ?>
 <div class="clearerleft"> </div></div>
 <?php hook("additionalusergroupfields"); ?>
-<!-- #DannyMartin10262016-->
+<!-- ADD TYPE OF MEDICARE QUESTION DROPDOWN BY DM -->
 <div class ="Question"><label>Type</label>
 	<select class="stdwidth" name="userType">
 		<option value="Medicare">Medicare</option>
@@ -140,9 +140,9 @@ if (($user["login_tries"]>=$max_login_attempts_per_username) && (strtotime($user
 	<div class="clearerleft"></div>
 </div>
 <div class="Question"><label><?php echo $lang["emailaddress"]?></label><input name="email" type="text" class="stdwidth" value="<?php echo form_value_display($user,"email") ?>"><div class="clearerleft"> </div></div>
-<!-- #DannyMartin10262016-->
-<div class="Question"><label><?php echo $lang["emailaddress"]?></label><input name="email" type="text" class="stdwidth" value="<?php echo form_value_display($user,"email") ?>"><div class="clearerleft"></div></div>
-<div class="Question"><label><?php echo $lang["emailaddress"]?></label><input name="email" type="text" class="stdwidth" value="<?php echo form_value_display($user,"email") ?>"><div class="clearerleft"></div></div>
+<!-- ADD TWO EXTRA EMAIL ADDRESSES BY DM -->
+<div class="Question"><label><?php echo $lang["emailaddress"]?></label><input name="email2" type="text" class="stdwidth" value="<?php echo form_value_display($user,"email2") ?>"><div class="clearerleft"></div></div>
+<div class="Question"><label><?php echo $lang["emailaddress"]?></label><input name="email3" type="text" class="stdwidth" value="<?php echo form_value_display($user,"email3") ?>"><div class="clearerleft"></div></div>
 
 <div class="Question"><label><?php echo $lang["accountexpiresoptional"]?><br/><?php echo $lang["format"] . ": " . $lang["yyyy-mm-dd"]?></label><input name="account_expires" type="text" class="stdwidth" value="<?php echo form_value_display($user,"account_expires")?>"><div class="clearerleft"> </div></div>
 
@@ -233,6 +233,15 @@ if (!hook("ticktoemailpassword"))
 </div>
 </form>
 </div>
+<!-- ADDED 3 COLUMNS into DB BY DM-->
+<?php 
+sql_connect();
+db_begin_transaction();
+mysql_query("ALTER TABLE `user` ADD COLUMN `email2` VARCHAR(100) NOT NULL AFTER `email`");
+mysql_query("ALTER TABLE `user` ADD COLUMN `email3` VARCHAR(100) NOT NULL AFTER `email2`");
+mysql_query("ALTER TABLE `user` ADD COLUMN `type` VARCHAR(100) NOT NULL AFTER `email3`");
+db_end_transaction();
+?>
 <?php		
 include "../../include/footer.php";
 ?>
